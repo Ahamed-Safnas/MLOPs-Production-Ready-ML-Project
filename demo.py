@@ -3,9 +3,7 @@
 # logging.info("hey, welcome to our custom log ")
 
 
-from dotenv import load_dotenv
-import os
+from us_visa.pipline.training_pipeline import TrainPipeline
 
-load_dotenv()
-MONGODB_URL_KEY = os.getenv("MONGODB_URL")
-print(f"MONGODB_URL_KEY: {MONGODB_URL_KEY}")
+obj = TrainPipeline()
+obj.run_pipeline()
