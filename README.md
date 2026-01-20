@@ -38,9 +38,11 @@ pip install -r requirements.txt
 
 1. constants
 2. entity
-3. components
-4. pipeline
-5. Main file
+3. constants
+4. configuration
+5. components
+6. pipeline
+7. Main file
 
 
 
