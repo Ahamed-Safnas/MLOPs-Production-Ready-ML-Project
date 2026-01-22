@@ -9,7 +9,8 @@ load_dotenv()
 DATABASE_NAME = "US_VISA"
 COLLECTION_NAME = "visa_data"
 
-MONGODB_URL_KEY = "MONGODB_URL"
+# MONGODB_URL_KEY = "MONGODB_URL"
+MONGODB_URL_KEY = os.getenv("MONGODB_URL")
 
 PIPELINE_NAME: str = "usvisa"
 ARTIFACT_DIR: str = "artifact"
