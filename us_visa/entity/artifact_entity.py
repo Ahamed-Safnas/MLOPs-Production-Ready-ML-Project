@@ -8,6 +8,12 @@ class DataIngestionArtifact:
 
 @dataclass
 class DataValidationArtifact:
-    validation_status:bool
-    message: str # to show datadrift is there or not
-    drift_report_file_path: str # path to the drift report file
+    validation_status:bool #whether data validation is successful or not
+    message: str   #dataset has a data drift or not
+    drift_report_file_path: str #path to the drift report file
+
+@dataclass
+class DataTransformationArtifact:
+    transformed_object_file_path:str 
+    transformed_train_file_path:str
+    transformed_test_file_path:str

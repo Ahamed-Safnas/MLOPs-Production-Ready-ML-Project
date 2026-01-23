@@ -3,8 +3,10 @@ from us_visa.exception import USvisaException
 from us_visa.logger import logging
 from us_visa.components.data_ingestion import DataIngestion
 from us_visa.components.data_validation import DataValidation
+
 from us_visa.entity.config_entity import (DataIngestionConfig, DataValidationConfig)
 from us_visa.entity.artifact_entity import (DataIngestionArtifact, DataValidationArtifact)
+
 
 class TrainPipeline:
     def __init__(self):
@@ -28,6 +30,7 @@ class TrainPipeline:
         except Exception as e:
             raise USvisaException(e, sys) from e
         
+
     def start_data_validation(self, data_ingestion_artifact: DataIngestionArtifact) -> DataValidationArtifact:
         """
         This method of TrainPipeline class is responsible for starting data validation component
@@ -59,7 +62,7 @@ class TrainPipeline:
         try:
             logging.info("Entered the run_pipeline method of TrainPipeline class")
             data_ingestion_artifact = self.start_data_ingestion()
-            data_validation_artifact = self.start_data_validation(data_ingestion_artifact=data_ingestion_artifact)
             logging.info("Exited the run_pipeline method of TrainPipeline class")
+            data_validation_artifact = self.start_data_validation(data_ingestion_artifact=data_ingestion_artifact)
         except Exception as e:
             raise USvisaException(e, sys) from e
