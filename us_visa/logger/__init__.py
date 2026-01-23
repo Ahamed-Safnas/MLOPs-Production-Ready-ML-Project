@@ -45,6 +45,3 @@ logging.basicConfig(
     force=True
 )
 
-# logger = logging.getLogger("us_visa_logger")
-
-# print("LOGGER INITIALIZED AT:", logs_path)   # DEBUG LINE — REMOVE LATER
