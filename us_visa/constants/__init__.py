@@ -60,14 +60,15 @@ MODEL_TRAINER_TRAINED_MODEL_NAME: str = "model.pkl"
 MODEL_TRAINER_EXPECTED_SCORE: float = 0.6
 MODEL_TRAINER_MODEL_CONFIG_FILE_PATH: str = os.path.join("config", "model.yaml")
 
-AWS_ACCESS_KEY_ID_ENV_KEY = "AWS_ACCESS_KEY_ID"
-AWS_SECRET_ACCESS_KEY_ENV_KEY = "AWS_SECRET_ACCESS_KEY"
-REGION_NAME = "us-east-1"
+AWS_ACCESS_KEY_ID_ENV_KEY = os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY_ENV_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+# REGION_NAME = "us-east-1"
+REGION_NAME = "eu-north-1"
 
 """
 MODEL EVALUATION related constant 
 """
-MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE: float = 0.02
-MODEL_BUCKET_NAME = "usvisa-model2024"  #add your s3 bucket name here
+MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE: float = 0.02 # need to more then 0.08> ,but for testing purpose kept 0.02
+MODEL_BUCKET_NAME = "usvisa-model2026-mlop"  #add your s3 bucket name here
 MODEL_PUSHER_S3_KEY = "model-registry"
 
