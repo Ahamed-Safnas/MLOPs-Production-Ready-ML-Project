@@ -55,3 +55,15 @@ class ModelEvaluationConfig:
     changed_threshold_score: float = MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE
     bucket_name: str = MODEL_BUCKET_NAME
     s3_model_key_path: str = MODEL_FILE_NAME
+
+
+@dataclass
+class ModelPusherConfig:
+    bucket_name: str = MODEL_BUCKET_NAME
+    s3_model_key_path: str = MODEL_FILE_NAME
+
+# this is optional if you want to see the pushed model path in artifact folder you can keep it otherwise you can delete it
+@dataclass
+class ModelPusherArtifact:
+    bucket_name:str
+    s3_model_path:str
