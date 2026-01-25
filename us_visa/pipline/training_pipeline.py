@@ -30,7 +30,7 @@ class TrainPipeline:
         self.data_transformation_config = DataTransformationConfig()
         self.model_trainer_config = ModelTrainerConfig()
         self.model_evaluation_config = ModelEvaluationConfig()
-        self.moodel_pusher_config = ModelPusherConfig()
+        self.model_pusher_config = ModelPusherConfig()
     
     def start_data_ingestion(self) -> DataIngestionArtifact:
         """
@@ -100,6 +100,35 @@ class TrainPipeline:
             model_trainer_artifact = model_trainer.initiate_model_trainer()
             return model_trainer_artifact
 
+        except Exception as e:
+            raise USvisaException(e, sys)
+        
+    def start_model_evaluation(self, data_ingestion_artifact: DataIngestionArtifact,
+                               model_trainer_artifact: ModelTrainerArtifact) -> ModelEvaluationArtifact:
+        """
+        This method of TrainPipeline class is responsible for starting modle evaluation
+        """
+        try:
+            model_evaluation = ModelEvaluation(model_eval_config=self.model_evaluation_config,
+                                               data_ingestion_artifact=data_ingestion_artifact,
+                                               model_trainer_artifact=model_trainer_artifact)
+            model_evaluation_artifact = model_evaluation.initiate_model_evaluation()
+            return model_evaluation_artifact
+        except Exception as e:
+            raise USvisaException(e, sys)
+        
+
+    
+    def start_model_pusher(self, model_evaluation_artifact: ModelEvaluationArtifact) -> ModelPusherArtifact:
+        """
+        This method of TrainPipeline class is responsible for starting model pushing
+        """
+        try:
+            model_pusher = ModelPusher(model_evaluation_artifact=model_evaluation_artifact,
+                                       model_pusher_config=self.model_pusher_config
+                                       )
+            model_pusher_artifact = model_pusher.initiate_model_pusher()
+            return model_pusher_artifact
         except Exception as e:
             raise USvisaException(e, sys)
           

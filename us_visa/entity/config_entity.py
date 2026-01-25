@@ -57,13 +57,13 @@ class ModelEvaluationConfig:
     s3_model_key_path: str = MODEL_FILE_NAME
 
 
-@dataclass
+@dataclass # this is optional if you want to see the pushed model path in artifact folder you can keep it otherwise you can delete it
 class ModelPusherConfig:
     bucket_name: str = MODEL_BUCKET_NAME
     s3_model_key_path: str = MODEL_FILE_NAME
 
-# this is optional if you want to see the pushed model path in artifact folder you can keep it otherwise you can delete it
+
 @dataclass
-class ModelPusherArtifact:
-    bucket_name:str
-    s3_model_path:str
+class USvisaPredictorConfig:
+    model_file_path: str = MODEL_FILE_NAME
+    model_bucket_name: str = MODEL_BUCKET_NAME
